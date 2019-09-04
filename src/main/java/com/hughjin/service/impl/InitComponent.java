@@ -8,6 +8,7 @@ import com.hughjin.service.BlogService;
 import com.hughjin.service.BlogTypeService;
 import com.hughjin.service.BloggerService;
 import com.hughjin.service.LinkService;
+import com.hughjin.util.redis.RedisInitUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -50,6 +51,9 @@ public class InitComponent implements ServletContextListener,ApplicationContextA
 		LinkService linkService=(LinkService) applicationContext.getBean("linkService");
 		List<Link> linkList=linkService.list(null); // 查询所有的友情链接信息
 		application.setAttribute("linkList", linkList);
+
+        //初始化Redis服务
+        RedisInitUtil.afterPropertiesSet();
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

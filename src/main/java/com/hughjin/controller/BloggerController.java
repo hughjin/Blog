@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 博主Controller层
- * @author hughjin_小锋
  *
+ * @author hughjin
  */
 @Controller
 @RequestMapping("/blogger")
@@ -27,18 +27,22 @@ public class BloggerController {
 
     /**
      * 用户登录
+     *
      * @param blogger
      * @param request
      * @return
      */
     @RequestMapping("/login")
-    public String login(Blogger blogger,HttpServletRequest request){
-        Subject subject=SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken(blogger.getUserName(), CryptographyUtil.md5(blogger.getPassword(), "hughjin"));
-        try{
+    public String login(Blogger blogger, HttpServletRequest request) {
+        //com.hughjin.realm.MyRealm
+        Subject subject = SecurityUtils.getSubject();
+        //账号密码 token
+        UsernamePasswordToken token = new UsernamePasswordToken(blogger.getUserName(), CryptographyUtil.md5(blogger.getPassword()));
+        try {
             subject.login(token); // 登录验证
+            //调整后台主页面
             return "redirect:/admin/main.jsp";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("blogger", blogger);
             request.setAttribute("errorInfo", "用户名或密码错误！");
@@ -52,11 +56,11 @@ public class BloggerController {
      * @throws Exception
      */
     @RequestMapping("/aboutMe")
-    public ModelAndView aboutMe()throws Exception{
-        ModelAndView mav=new ModelAndView();
-        mav.addObject("blogger",bloggerService.find());
+    public ModelAndView aboutMe() {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("blogger", bloggerService.find());
         mav.addObject("mainPage", "foreground/blogger/info.jsp");
-        mav.addObject("pageTitle","关于博主_Java开源博客系统");
+        mav.addObject("pageTitle", "Java博客系统");
         mav.setViewName("mainTemp");
         return mav;
     }
