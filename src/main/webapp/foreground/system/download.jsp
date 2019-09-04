@@ -36,39 +36,5 @@
 <p>
     <br/>
 </p>
-<p>
-    V1.0 2016年2月2号发布
-</p>
-<p>
-    高清功能演示视频以及完整源码和数据库脚本下载地址：<a href="http://pan.baidu.com/s/1sk23EUD" target="_blank" title="http://pan.baidu.com/s/1sk23EUD">http://pan.baidu.com/s/1sk23EUD</a>
-</p>
-<p>
-    <br/>
-</p>
-<p>
-    V2.0 2016年2月22号发布
-</p>
-<p>
-   完整源码和数据库脚本下载地址：<a href="http://pan.baidu.com/s/1eRfrsAm" target="_blank" title="http://pan.baidu.com/s/1eRfrsAm">http://pan.baidu.com/s/1eRfrsAm</a>
-</p>
-<p>
-	修复一些bug;<br/>
-	添加评论审核功能;<br/>
-	添加友情链接功能;<br/>
-	日志类别排序显示功能;<br/>
-	博客显示列表加博客缩略图功能;<br/>
-	博客加关键字功能;<br/>
-	博客加分享链接功能;<br/>
-</p>
-
-<p>
-    <br/>
-</p>
-<p>
-    V3.0 预计2016年4月1号正式发布；(目前内测中)
-</p>
-<p>
-	优化系统，提高访问速度;<br/>
-</p>
 	</div>
 </div>

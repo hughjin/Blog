@@ -4,7 +4,7 @@ import com.hughjin.entity.Blogger;
 
 /**
  * 博主Service接口
- * @author hughjin_小锋
+ * @author hughjin
  *
  */
 public interface BloggerService {

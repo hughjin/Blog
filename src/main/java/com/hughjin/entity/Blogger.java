@@ -2,7 +2,7 @@ package com.hughjin.entity;
 
 /**
  * 博主实体
- * @author hughjin_小锋
+ * @author hughjin
  *
  */
 public class Blogger {

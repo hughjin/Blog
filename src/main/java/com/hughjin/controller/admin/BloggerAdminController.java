@@ -1,24 +1,21 @@
 package com.hughjin.controller.admin;
 
-import java.io.File;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.hughjin.entity.Blogger;
+import com.hughjin.service.BloggerService;
+import com.hughjin.util.CryptographyUtil;
+import com.hughjin.util.DateUtil;
+import com.hughjin.util.ResponseUtil;
+import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hughjin.entity.Blogger;
-import com.hughjin.service.BloggerService;
-import com.hughjin.util.CryptographyUtil;
-import com.hughjin.util.DateUtil;
-import com.hughjin.util.ResponseUtil;
-
-import net.sf.json.JSONObject;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 /**
  * 管理员博主Controller层
@@ -84,7 +81,7 @@ public class BloggerAdminController {
 	@RequestMapping("/modifyPassword")
 	public String modifyPassword(String newPassword,HttpServletResponse response)throws Exception{
 		Blogger blogger=new Blogger();
-		blogger.setPassword(CryptographyUtil.md5(newPassword, "hughjin"));
+        blogger.setPassword(CryptographyUtil.md5(newPassword));
 		int resultTotal=bloggerService.update(blogger);
 		JSONObject result=new JSONObject();
 		if(resultTotal>0){

@@ -60,6 +60,7 @@
 	    <property name="filterChainDefinitions">  
 	        <value>
 				/login=anon
+                /test/**=anon
 				/admin/**=authc
 	        </value>  
 	    </property>
@@ -94,15 +95,29 @@
             <tx:method name="load*" propagation="REQUIRED" read-only="true" />  
             <tx:method name="*" propagation="REQUIRED" read-only="true" />  
         </tx:attributes>  
-    </tx:advice>  
-  
-    <!-- 配置事务切面 -->  
-    <aop:config>  
-        <aop:pointcut id="serviceOperation"  
+    </tx:advice>
+
+    <!-- 配置事务切面 -->
+    <aop:config>
+        <aop:pointcut id="serviceOperation"
             expression="execution(* com.hughjin.service.*.*(..))" />
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />  
-    </aop:config>  
-    
-   <!-- 自动扫描 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+    </aop:config>
+
+    <!-- 自动扫描 -->
 	<context:component-scan base-package="com.hughjin.service" />
+
+    <!-- 初始化类 -->
+    <bean id="redisInitUtil" class="com.hughjin.util.redis.RedisInitUtil">
+        <!-- 访问地址，默认本地 -->
+        <property name="address" value="127.0.0.1"/>
+        <!-- 端口号 -->
+        <property name="port" value="6379"/>
+        <property name="auth" value="master"/>
+        <property name="maxIdle" value="200"/>
+        <property name="maxActive" value="1024"/>
+        <property name="maxWait" value="10000"/>
+        <property name="timeOut" value="10000"/>
+        <property name="testOnBorrow" value="true"/>
+    </bean>
 </beans>
