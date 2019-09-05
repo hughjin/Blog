@@ -1,11 +1,15 @@
 package com.hughjin.entity;
 
+import java.io.Serializable;
+
 /**
  * 博主实体
  * @author hughjin
  *
  */
-public class Blogger {
+public class Blogger implements Serializable {
+
+    private static final long serialVersionUID = 8190772897152234989L;
 
 	private Integer id; // 编号
 	private String userName; // 用户名
@@ -58,6 +62,16 @@ public class Blogger {
 		this.imageName = imageName;
 	}
 
-
-
+    @Override
+    public String toString() {
+        return "Blogger{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", sign='" + sign + '\'' +
+                ", proFile='" + proFile + '\'' +
+                ", imageName='" + imageName + '\'' +
+                '}';
+    }
 }

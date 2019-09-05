@@ -38,7 +38,7 @@ public class BlogIndex {
 	 * @throws Exception
 	 */
 	private IndexWriter getWriter()throws Exception{
-		dir=FSDirectory.open(Paths.get("C://lucene"));
+        dir = FSDirectory.open(Paths.get("D://lucene"));
 		SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();
 		IndexWriterConfig iwc=new IndexWriterConfig(analyzer);
 		IndexWriter writer=new IndexWriter(dir, iwc);
@@ -96,7 +96,7 @@ public class BlogIndex {
 	 * @throws Exception
 	 */
 	public List<Blog> searchBlog(String q)throws Exception{
-		dir=FSDirectory.open(Paths.get("C://lucene"));
+        dir = FSDirectory.open(Paths.get("D://lucene"));
 		IndexReader reader = DirectoryReader.open(dir);
 		IndexSearcher is=new IndexSearcher(reader);
 		BooleanQuery.Builder booleanQuery = new BooleanQuery.Builder();

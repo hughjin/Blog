@@ -1,5 +1,7 @@
 package com.hughjin.util.redis;
 
+import com.hughjin.util.json.JsonUtils;
+import org.apache.commons.lang.StringUtils;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
@@ -790,5 +792,38 @@ public class RedisServiceUtil {
         }
     }
 
+    //------------------------------------------------------
+    public String redisGetStringInfo(KeyNameTypeEnum keyNameType) {
+        try {
+            String key = RedisConstant.getIndexKey(keyNameType);
+            if (this.exists(key)) {
+                return this.get(key);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public <T> T redisGetString(Class<T> t, KeyNameTypeEnum keyNameType) {
+        try {
+            String json = this.redisGetStringInfo(keyNameType);
+            if (StringUtils.isNotBlank(json)) {
+                return JsonUtils.parseJsonStrToBean(json, t);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void redisSetString(String json, KeyNameTypeEnum keyNameType) {
+        try {
+            String key = RedisConstant.getIndexKey(keyNameType);
+            this.set(key, json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

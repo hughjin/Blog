@@ -64,7 +64,36 @@ public abstract class BaseRedisConstant {
     // ------------------------------------------【单个对象】：数据操作时自更新【状态为无效/删除时移除key】规则:exp=dd:hh:mm 指绝对时间 0:23:30 每天晚上23点执行
     // 至 1:01:00 第二天的凌晨1点执行 |相对时间"+ ONE_HOUR +"}?号为对应的id值------------------------
 
-    //// List集合
-    public static final String LIST_ACTIVITY_PRODUCT_KEY = KEY_COMMON_PREFIX_BLOG + KeyType.LIST.name() + "_ACTIVITY_PRODUCT_{by:activityId=?}{exp=" + ONE_DAY + "}";
+    /**
+     * 关于博主
+     */
+    protected static final String STRING_BLOGGER_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.STRING.name() + "_BLOGGER_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 友情链接
+     */
+    protected static final String SET_LINK_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.SET.name() + "_LINK_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 博客内容信息
+     */
+    protected static final String STRING_BLOG_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.STRING.name() + "_BLOG_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 阅读数
+     */
+    protected static final String STRING_BLOG_READ_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.STRING.name() + "_BLOG_READ_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 评论数
+     */
+    protected static final String STRING_BLOG_REPLY_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.STRING.name() + "_BLOG_REPLY_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 博客类别信息
+     */
+    protected static final String SET_BLOG_TYPE_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.SET.name() + "_BLOG_TYPE_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+    /**
+     * 评论信息
+     */
+    protected static final String SET_BLOG_COMMENT_INFO = KEY_COMMON_PREFIX_BLOG + KeyType.SET.name() + "_BLOG_COMMENT_INFO_{by:indexKey=?}{exp=" + NEVER_EXPIRE + "}";
+
+
+
 
 }

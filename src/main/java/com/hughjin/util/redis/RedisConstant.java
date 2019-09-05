@@ -385,10 +385,17 @@ public class RedisConstant extends BaseRedisConstant {
 
     //-----------------------生成KEY值--------------------------
 
-    public static String getActivityKey(String activityId) {
+    /**
+     * 生成Redis的key
+     *
+     * @param indexKey
+     * @param keyNameType
+     * @return
+     */
+    public static String getIndexKey(KeyNameTypeEnum keyNameType) {
         Map<String, String> bys = new LinkedHashMap<String, String>();
-        bys.put("activityId", activityId);
-        return getRedisKey(LIST_ACTIVITY_PRODUCT_KEY, bys);
+        bys.put("indexKey", keyNameType.getIndexKey());
+        return RedisConstant.getRedisKey(keyNameType.getTypeCode(), bys);
     }
 
 

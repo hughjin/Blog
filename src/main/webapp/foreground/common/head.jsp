@@ -6,6 +6,6 @@
 	</div>
 	<div class="col-md-8">
         <iframe style="float: right;" width="420" scrolling="no" height="60" frameborder="0" allowtransparency="true"
-                src="http://i.tianqi.com/index.php?c=code&id=2&icon=6&num=5"></iframe>
+				src="http://i.tianqi.com/index.php?c=code&id=7&icon=6&num=5"></iframe>
 	</div>
 </div>
